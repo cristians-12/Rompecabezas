@@ -1,0 +1,38 @@
+.puzzle{
+    height: fit-content;
+    width: 156px;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+}
+body{
+    margin:0;
+    height: fit-content;
+}
+.contenedor{
+    display: flex;
+    gap: 12%;
+    position: relative;
+}
+.piezas{
+    display: flex;
+    flex-wrap: wrap;
+    width: 156px;
+}
+
+.pieza{
+    height: 50px;
+    width: 50px;
+    background-size: 100%;
+}
+.hover{
+    background-color: red;
+}
+h1{
+    display: none;
+}
+.puestos{
+    height: 50px;
+    width: 50px;
+    border: 1px solid;
+}
