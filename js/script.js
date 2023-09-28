@@ -127,6 +127,9 @@ piezasTot.forEach((piece) => {
     let id = piezaSelect.id.split("-")[1];
     compararPos(id, posFinal, cuadros);
     piezaSelect = null;
+    if(piezas.childElementCount === 0){
+        alert("Ganaste!")
+    }
   });
 
   piece.addEventListener("touchmove", (e) => {
