@@ -4,20 +4,24 @@
     border: 1px solid;
     display: flex;
     flex-wrap: wrap;
+    margin-left: 10;
 }
 body{
     margin:0;
     height: fit-content;
 }
 .contenedor{
-    display: flex;
+    /* display: flex; */
     gap: 12%;
     position: relative;
+    padding-left: 30%;
+    margin-top: 20%;
 }
 .piezas{
     display: flex;
     flex-wrap: wrap;
     width: 156px;
+    margin-top: 20%;
 }
 
 .pieza{
