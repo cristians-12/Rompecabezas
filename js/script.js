@@ -53,10 +53,10 @@ puzzle.addEventListener("drop", (e) => {
 
   const id = e.dataTransfer.getData("id");
 
-  console.log(id);
+//   console.log(id);
   const valor = id.split("-")[1];
 
-  console.log(e.target.dataset.id);
+//   console.log(e.target.dataset.id);
 
   if (e.target.dataset.id == valor) {
     e.target.appendChild(document.getElementById(id));
@@ -74,14 +74,6 @@ let puestosPos = [];
 const cuadros = [];
 
 function compararPos(id, posPieza, cuadros) {
-    console.log(cuadros[id].position.left)
-    console.log(posPieza.left)
-    console.log(cuadros[id].position.right)
-    console.log(posPieza.right)
-    console.log(cuadros[id].position.top)
-    console.log(posPieza.top)
-    console.log(cuadros[id].position.bottom)
-    console.log(posPieza.bottom)
 
   if (
     (posPieza.left>=cuadros[id].position.left-10 && posPieza.left <= cuadros[id].position.left+10) &&
@@ -90,12 +82,12 @@ function compararPos(id, posPieza, cuadros) {
     (posPieza.bottom >= cuadros[id].position.bottom-10 && posPieza.bottom <= cuadros[id].position.bottom+10)
   ) {
     // puestos[id].appendChild(document.getElementById(`imagen-${id}`));
-    console.log("encajó");
+    // console.log("encajó");
     // puestos[id].appendChild(piezasTot.id.split("-")[1]) //Agregar elementos.
     piezasTot.forEach((e, i) => {
       // console.log(e.id.split("-")[1])
       if (e.id.split("-")[1] === id) {
-        console.log("coincide en " + i);
+        // console.log("coincide en " + i);
         puestos[id].appendChild(piezasTot[i]);
 
         piezasTot[i].style.position = "initial";
