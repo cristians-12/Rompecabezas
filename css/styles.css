@@ -13,7 +13,7 @@ body{
     /* display: flex; */
     gap: 12%;
     position: relative;
-    padding-left: 30%;
+    /* padding-left: 30%; */
     /* margin-top: 20%; */
 }
 .piezas{
