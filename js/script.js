@@ -76,25 +76,19 @@ const cuadros = [];
 function compararPos(id, posPieza, cuadros) {
 
   if (
-    (posPieza.left>=cuadros[id].position.left-10 && posPieza.left <= cuadros[id].position.left+10) &&
-    (posPieza.right>=cuadros[id].position.right-10 && posPieza.right <= cuadros[id].position.right+10) &&
-    (posPieza.top >= cuadros[id].position.top-10 && posPieza.top <= cuadros[id].position.right+10) &&
-    (posPieza.bottom >= cuadros[id].position.bottom-10 && posPieza.bottom <= cuadros[id].position.bottom+10)
+    (posPieza.left>=cuadros[id].position.left-20 && posPieza.left <= cuadros[id].position.left+20) &&
+    (posPieza.right>=cuadros[id].position.right-20 && posPieza.right <= cuadros[id].position.right+20) &&
+    (posPieza.top >= cuadros[id].position.top-20 && posPieza.top <= cuadros[id].position.top+20) &&
+    (posPieza.bottom >= cuadros[id].position.bottom-20 && posPieza.bottom <= cuadros[id].position.bottom+20)
   ) {
-    // puestos[id].appendChild(document.getElementById(`imagen-${id}`));
-    // console.log("encajó");
-    // puestos[id].appendChild(piezasTot.id.split("-")[1]) //Agregar elementos.
-    piezasTot.forEach((e, i) => {
-      // console.log(e.id.split("-")[1])
-      if (e.id.split("-")[1] === id) {
-        // console.log("coincide en " + i);
-        puestos[id].appendChild(piezasTot[i]);
 
+    piezasTot.forEach((e, i) => {
+      if (e.id.split("-")[1] === id) {
+        puestos[id].appendChild(piezasTot[i]);
         piezasTot[i].style.position = "initial";
       }
     });
   } else {
-    // console.log("no coincide");
     piezasTot.forEach((e, i) => {
       if (e.id.split("-")[1] === id) {
         console.log("No coincide en " + i);
