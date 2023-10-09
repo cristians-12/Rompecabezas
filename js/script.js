@@ -9,79 +9,97 @@ const imagenes = [
   "imagen-7",
   "imagen-8",
 ];
+const imagenes1 = ["p-0", "p-1", "p-2"];
 
 const puzzle = document.querySelector(".puzzle");
 const piezas = document.querySelector(".piezas");
 const mensaje = document.querySelector(".msg");
 
-while (imagenes.length) {
-  let i = Math.floor(Math.random() * imagenes.length);
+const piezas1 = document.querySelector(".piezas1");
 
+while (imagenes1.length) {
+  let i = Math.floor(Math.random() * imagenes1.length);
+  console.log(i);
   const div = document.createElement("div");
-  div.className = "pieza";
-  div.id = imagenes[i];
-  div.draggable = true;
-  div.style.backgroundImage = `url(img/${imagenes[i]}.png)`;
-  piezas.appendChild(div);
-  // console.log(i)
-  imagenes.splice(i, 1);
+  div.id = imagenes1[i];
+  div.innerHTML = `<img src="img/${
+    imagenes1[i]
+  }.png" class='absolute w-[25%] pieza1' id='${imagenes1[i].split("-")[1]}'>`;
+  piezas1.appendChild(div);
+  imagenes1.splice(i, 1);
 }
 
-for (let i = 0; i < 9; i++) {
-  const div = document.createElement("div");
-  div.className = "puestos";
-  div.dataset.id = i;
-  puzzle.appendChild(div);
-}
+// while (imagenes.length) {
+//   let i = Math.floor(Math.random() * imagenes.length);
 
-piezas.addEventListener("dragstart", (e) => {
-  e.dataTransfer.setData("id", e.target.id);
-});
+//   const div = document.createElement("div");
+//   div.className = "pieza";
+//   div.id = imagenes[i];
+//   div.draggable = true;
+//   div.style.backgroundImage = `url(img/${imagenes[i]}.png)`;
+//   piezas.appendChild(div);
+//   // console.log(i)
+//   imagenes.splice(i, 1);
+// }
 
-puzzle.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  e.target.classList.add("hover");
-});
+// for (let i = 0; i < 9; i++) {
+//   const div = document.createElement("div");
+//   div.className = "puestos";
+//   div.dataset.id = i;
+//   puzzle.appendChild(div);
+// }
 
-puzzle.addEventListener("dragleave", (e) => {
-  e.preventDefault();
-  e.target.classList.remove("hover");
-});
+// piezas.addEventListener("dragstart", (e) => {
+//   e.dataTransfer.setData("id", e.target.id);
+// });
 
-puzzle.addEventListener("drop", (e) => {
-  e.target.classList.remove("hover");
+// puzzle.addEventListener("dragover", (e) => {
+//   e.preventDefault();
+//   e.target.classList.add("hover");
+// });
 
-  const id = e.dataTransfer.getData("id");
+// puzzle.addEventListener("dragleave", (e) => {
+//   e.preventDefault();
+//   e.target.classList.remove("hover");
+// });
 
-//   console.log(id);
-  const valor = id.split("-")[1];
+// puzzle.addEventListener("drop", (e) => {
+//   e.target.classList.remove("hover");
 
-//   console.log(e.target.dataset.id);
+//   const id = e.dataTransfer.getData("id");
 
-  if (e.target.dataset.id == valor) {
-    e.target.appendChild(document.getElementById(id));
-  }
-});
+//   //   console.log(id);
+//   const valor = id.split("-")[1];
+
+//   //   console.log(e.target.dataset.id);
+
+//   if (e.target.dataset.id == valor) {
+//     e.target.appendChild(document.getElementById(id));
+//   }
+// });
 
 // ---------------Version mobile----------------------------------
 
-let piezasTot = document.querySelectorAll(".pieza");
+let piezasTot = document.querySelectorAll(".pieza1");
 let piezaSelect = null;
 
-let puestos = document.querySelectorAll(".puestos");
+let puestos = document.querySelectorAll(".puestos1");
 let idCuadros = [];
 let puestosPos = [];
 const cuadros = [];
 
 function compararPos(id, posPieza, cuadros) {
-
+  //funcion para comparar.
   if (
-    (posPieza.left>=cuadros[id].position.left-20 && posPieza.left <= cuadros[id].position.left+20) &&
-    (posPieza.right>=cuadros[id].position.right-20 && posPieza.right <= cuadros[id].position.right+20) &&
-    (posPieza.top >= cuadros[id].position.top-20 && posPieza.top <= cuadros[id].position.top+20) &&
-    (posPieza.bottom >= cuadros[id].position.bottom-20 && posPieza.bottom <= cuadros[id].position.bottom+20)
+    posPieza.left >= cuadros[id].position.left - 20 &&
+    posPieza.left <= cuadros[id].position.left + 20 &&
+    posPieza.right >= cuadros[id].position.right - 20 &&
+    posPieza.right <= cuadros[id].position.right + 20 &&
+    posPieza.top >= cuadros[id].position.top - 20 &&
+    posPieza.top <= cuadros[id].position.top + 20 &&
+    posPieza.bottom >= cuadros[id].position.bottom - 20 &&
+    posPieza.bottom <= cuadros[id].position.bottom + 20
   ) {
-
     piezasTot.forEach((e, i) => {
       if (e.id.split("-")[1] === id) {
         puestos[id].appendChild(piezasTot[i]);
@@ -101,7 +119,8 @@ function compararPos(id, posPieza, cuadros) {
 puestos.forEach((puesto) => {
   //Posiciones de lugares del rompecabezas
   const rect = puesto.getBoundingClientRect();
-  const id = puesto.dataset.id;
+  // const id = puesto.dataset.id;
+  const id = puesto.id;
   puestosPos.push(rect);
   idCuadros.push(id);
   cuadros.push({
@@ -111,6 +130,7 @@ puestos.forEach((puesto) => {
 });
 
 piezasTot.forEach((piece) => {
+  //Añadiendo eventos.
   piece.addEventListener("touchstart", (e) => {
     piezaSelect = e.target;
     // console.log(piezaSelect)
@@ -118,11 +138,14 @@ piezasTot.forEach((piece) => {
 
   piece.addEventListener("touchend", (e) => {
     let posFinal = piezaSelect.getBoundingClientRect();
-    let id = piezaSelect.id.split("-")[1];
+    // let id = piezaSelect.id.split("-")[1];
+    let id = piezaSelect.id;
+    console.log(id);
+
     compararPos(id, posFinal, cuadros);
     piezaSelect = null;
-    if(piezas.childElementCount === 0){
-        alert("Ganaste!")
+    if (piezas1.childElementCount === 0) {
+      alert("Ganaste!");
     }
   });
 
@@ -130,9 +153,12 @@ piezasTot.forEach((piece) => {
     e.preventDefault();
     if (piezaSelect != null) {
       const tocar = e.touches[0];
-      piezaSelect.style.left = `${tocar.pageX}px`;
-      piezaSelect.style.top = `${tocar.pageY}px`;
-      piezaSelect.style.position = "absolute";
+      const offsetX = tocar.pageX - piezas1.getBoundingClientRect().left;
+      const offsetY = tocar.pageY - piezas1.getBoundingClientRect().top;
+      // console.log(tocar)
+      piezaSelect.style.left = `${offsetX}px`;
+      piezaSelect.style.top = `${offsetY}px`;
+      // piezaSelect.style.position = "absolute";
     }
   });
 });
