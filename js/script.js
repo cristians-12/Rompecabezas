@@ -22,9 +22,20 @@ while (imagenes1.length) {
   console.log(i);
   const div = document.createElement("div");
   div.id = imagenes1[i];
-  div.innerHTML = `<img src="img/${
-    imagenes1[i]
-  }.png" class='absolute w-[25%] pieza1' id='${imagenes1[i].split("-")[1]}'>`;
+  if (imagenes1[i].split("-")[1] == 0) {
+    div.innerHTML = `<img src="img/${
+      imagenes1[i]
+    }.png" class='absolute w-[10%] h-fit pieza1' id='${
+      imagenes1[i].split("-")[1]
+    }'>`;
+  } else {
+    div.innerHTML = `<img src="img/${
+      imagenes1[i]
+    }.png" class='absolute w-[25%] h-fit pieza1' id='${
+      imagenes1[i].split("-")[1]
+    }'>`;
+  }
+
   piezas1.appendChild(div);
   imagenes1.splice(i, 1);
 }
