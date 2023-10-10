@@ -103,14 +103,14 @@ function compararPos(id, posPieza, cuadros) {
   // console.log(cuadros)
   //funcion para comparar.
   if (
-    posPieza.left >= cuadros[id].position.left - 5 &&
-    posPieza.left <= cuadros[id].position.left + 5 &&
-    posPieza.top >= cuadros[id].position.top - 5 &&
-    posPieza.top <= cuadros[id].position.top + 5 &&
-    posPieza.right >= cuadros[id].position.right - 5 &&
-    posPieza.right <= cuadros[id].position.right + 5 &&
-    posPieza.bottom >= cuadros[id].position.bottom - 5 &&
-    posPieza.bottom <= cuadros[id].position.bottom + 5 
+    posPieza.left >= cuadros[id].position.left - 3 &&
+    posPieza.left <= cuadros[id].position.left + 3 &&
+    posPieza.top >= cuadros[id].position.top - 3 &&
+    posPieza.top <= cuadros[id].position.top + 3 &&
+    posPieza.right >= cuadros[id].position.right - 3 &&
+    posPieza.right <= cuadros[id].position.right + 3 &&
+    posPieza.bottom >= cuadros[id].position.bottom - 3 &&
+    posPieza.bottom <= cuadros[id].position.bottom + 3 
   ) {
     piezasTot.forEach((e, i) => {
       // if (e.id.split("-")[1] === id) {
@@ -122,6 +122,8 @@ function compararPos(id, posPieza, cuadros) {
         // console.log("Coincide en"+id)
         // puestos[id].appendChild(piezasTot[i]);
         // imgs[id].classList.add("hola")
+        e.style.top = cuadros[id].position.top;
+        e.style.left = cuadros[id].position.left;
       }
     });
   } else {
