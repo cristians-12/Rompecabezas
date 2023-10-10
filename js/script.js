@@ -19,7 +19,6 @@ const piezas1 = document.querySelector(".piezas1");
 
 while (imagenes1.length) {
   let i = Math.floor(Math.random() * imagenes1.length);
-  console.log(i);
   const div = document.createElement("div");
   div.id = imagenes1[i];
   if (imagenes1[i].split("-")[1] == 0) {
@@ -31,7 +30,7 @@ while (imagenes1.length) {
   } else {
     div.innerHTML = `<img src="img/${
       imagenes1[i]
-    }.png" class='absolute w-[25%] h-fit pieza1' id='${
+    }.png" class='absolute w-[20%] h-fit pieza1' id='${
       imagenes1[i].split("-")[1]
     }'>`;
   }
@@ -100,6 +99,7 @@ let puestosPos = [];
 const cuadros = [];
 
 function compararPos(id, posPieza, cuadros) {
+  console.log(cuadros[id])
   //funcion para comparar.
   if (
     posPieza.left >= cuadros[id].position.left - 20 &&
@@ -112,16 +112,23 @@ function compararPos(id, posPieza, cuadros) {
     posPieza.bottom <= cuadros[id].position.bottom + 20
   ) {
     piezasTot.forEach((e, i) => {
-      if (e.id.split("-")[1] === id) {
-        puestos[id].appendChild(piezasTot[i]);
-        piezasTot[i].style.position = "initial";
+      // if (e.id.split("-")[1] === id) {
+      //   puestos[id].appendChild(piezasTot[i]);
+      //   piezasTot[i].style.position = "initial";
+      // }
+      // console.log(e.id+"id")
+      if(e.id === id){
+        console.log("Coincide en"+id)
       }
     });
   } else {
     piezasTot.forEach((e, i) => {
-      if (e.id.split("-")[1] === id) {
-        console.log("No coincide en " + i);
-        piezasTot[i].style.position = "initial";
+      // if (e.id.split("-")[1] === id) {
+      //   console.log("No coincide en " + i);
+      //   piezasTot[i].style.position = "initial";
+      // }
+      if(e.id === id){
+        console.log("No coincide en "+id)
       }
     });
   }
