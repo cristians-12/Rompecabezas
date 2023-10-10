@@ -103,14 +103,14 @@ function compararPos(id, posPieza, cuadros) {
   // console.log(cuadros)
   //funcion para comparar.
   if (
-    posPieza.left >= cuadros[id].position.left - 4 &&
-    posPieza.left <= cuadros[id].position.left + 4 &&
-    posPieza.top >= cuadros[id].position.top - 4 &&
-    posPieza.top <= cuadros[id].position.top + 4 &&
-    posPieza.right >= cuadros[id].position.right - 4 &&
-    posPieza.right <= cuadros[id].position.right + 4 &&
-    posPieza.bottom >= cuadros[id].position.bottom - 4 &&
-    posPieza.bottom <= cuadros[id].position.bottom + 4 
+    posPieza.left >= cuadros[id].position.left - 5 &&
+    posPieza.left <= cuadros[id].position.left + 5 &&
+    posPieza.top >= cuadros[id].position.top - 5 &&
+    posPieza.top <= cuadros[id].position.top + 5 &&
+    posPieza.right >= cuadros[id].position.right - 5 &&
+    posPieza.right <= cuadros[id].position.right + 5 &&
+    posPieza.bottom >= cuadros[id].position.bottom - 5 &&
+    posPieza.bottom <= cuadros[id].position.bottom + 5
   ) {
     piezasTot.forEach((e, i) => {
       // if (e.id.split("-")[1] === id) {
