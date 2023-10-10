@@ -16,6 +16,7 @@ const piezas = document.querySelector(".piezas");
 const mensaje = document.querySelector(".msg");
 
 const piezas1 = document.querySelector(".piezas1");
+const imgs = document.querySelectorAll(".imgs");
 
 while (imagenes1.length) {
   let i = Math.floor(Math.random() * imagenes1.length);
@@ -99,17 +100,13 @@ let puestosPos = [];
 const cuadros = [];
 
 function compararPos(id, posPieza, cuadros) {
-  console.log(cuadros[id])
+  // console.log(cuadros)
   //funcion para comparar.
   if (
     posPieza.left >= cuadros[id].position.left - 20 &&
     posPieza.left <= cuadros[id].position.left + 20 &&
-    posPieza.right >= cuadros[id].position.right - 20 &&
-    posPieza.right <= cuadros[id].position.right + 20 &&
     posPieza.top >= cuadros[id].position.top - 20 &&
-    posPieza.top <= cuadros[id].position.top + 20 &&
-    posPieza.bottom >= cuadros[id].position.bottom - 20 &&
-    posPieza.bottom <= cuadros[id].position.bottom + 20
+    posPieza.top <= cuadros[id].position.top + 20
   ) {
     piezasTot.forEach((e, i) => {
       // if (e.id.split("-")[1] === id) {
@@ -118,7 +115,8 @@ function compararPos(id, posPieza, cuadros) {
       // }
       // console.log(e.id+"id")
       if(e.id === id){
-        console.log("Coincide en"+id)
+        // console.log("Coincide en"+id)
+        puestos[id].appendChild(piezasTot[i]);
       }
     });
   } else {
@@ -128,17 +126,20 @@ function compararPos(id, posPieza, cuadros) {
       //   piezasTot[i].style.position = "initial";
       // }
       if(e.id === id){
-        console.log("No coincide en "+id)
+        // console.log("No coincide en "+id)
+        piezasTot[i].style.top = "0";
+        piezasTot[i].style.left = '0';
       }
     });
   }
 }
 
-puestos.forEach((puesto) => {
+imgs.forEach((puesto) => {
   //Posiciones de lugares del rompecabezas
   const rect = puesto.getBoundingClientRect();
   // const id = puesto.dataset.id;
   const id = puesto.id;
+  // console.log(id)
   puestosPos.push(rect);
   idCuadros.push(id);
   cuadros.push({
@@ -158,7 +159,7 @@ piezasTot.forEach((piece) => {
     let posFinal = piezaSelect.getBoundingClientRect();
     // let id = piezaSelect.id.split("-")[1];
     let id = piezaSelect.id;
-    console.log(id);
+    // console.log(id);
 
     compararPos(id, posFinal, cuadros);
     piezaSelect = null;
