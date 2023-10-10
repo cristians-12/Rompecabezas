@@ -103,14 +103,14 @@ function compararPos(id, posPieza, cuadros) {
   // console.log(cuadros)
   //funcion para comparar.
   if (
-    posPieza.left >= cuadros[id].position.left - 5 &&
-    posPieza.left <= cuadros[id].position.left + 5 &&
-    posPieza.top >= cuadros[id].position.top - 5 &&
-    posPieza.top <= cuadros[id].position.top + 5 &&
-    posPieza.right >= cuadros[id].position.right - 5 &&
-    posPieza.right <= cuadros[id].position.right + 5 &&
-    posPieza.bottom >= cuadros[id].position.bottom - 5 &&
-    posPieza.bottom <= cuadros[id].position.bottom + 5
+    posPieza.left >= cuadros[id].position.left - 10 &&
+    posPieza.left <= cuadros[id].position.left + 10 &&
+    posPieza.top >= cuadros[id].position.top - 10 &&
+    posPieza.top <= cuadros[id].position.top + 10 &&
+    posPieza.right >= cuadros[id].position.right - 10 &&
+    posPieza.right <= cuadros[id].position.right + 10 &&
+    posPieza.bottom >= cuadros[id].position.bottom - 10 &&
+    posPieza.bottom <= cuadros[id].position.bottom + 10
   ) {
     piezasTot.forEach((e, i) => {
       // if (e.id.split("-")[1] === id) {
@@ -119,6 +119,7 @@ function compararPos(id, posPieza, cuadros) {
       // }
       // console.log(e.id+"id")
       if(e.id === id){
+        alert("Coincide en"+id)
         // console.log("Coincide en"+id)
         // puestos[id].appendChild(piezasTot[i]);
         // imgs[id].classList.add("hola")
