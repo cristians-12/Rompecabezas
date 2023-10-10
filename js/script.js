@@ -106,7 +106,11 @@ function compararPos(id, posPieza, cuadros) {
     posPieza.left >= cuadros[id].position.left - 20 &&
     posPieza.left <= cuadros[id].position.left + 20 &&
     posPieza.top >= cuadros[id].position.top - 20 &&
-    posPieza.top <= cuadros[id].position.top + 20
+    posPieza.top <= cuadros[id].position.top + 20 &&
+    posPieza.right >= cuadros[id].position.right - 20 &&
+    posPieza.right <= cuadros[id].position.right + 20 &&
+    posPieza.bottom >= cuadros[id].position.bottom - 20 &&
+    posPieza.bottom <= cuadros[id].position.bottom + 20 
   ) {
     piezasTot.forEach((e, i) => {
       // if (e.id.split("-")[1] === id) {
@@ -116,7 +120,8 @@ function compararPos(id, posPieza, cuadros) {
       // console.log(e.id+"id")
       if(e.id === id){
         // console.log("Coincide en"+id)
-        puestos[id].appendChild(piezasTot[i]);
+        // puestos[id].appendChild(piezasTot[i]);
+        imgs[id].classList.add("hola")
       }
     });
   } else {
